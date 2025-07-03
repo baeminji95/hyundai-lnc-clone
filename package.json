@@ -1,5 +1,15 @@
 {
+  "name": "hyundailnc",
+  "version": "0.1.0",
+  "homepage": "https://baeminji95.github.io/hyundai-lnc-clone/",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
