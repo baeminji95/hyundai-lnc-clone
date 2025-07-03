@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+
+
+:root {
+	font-family: "Manrope", "Noto Sans KR", sans-serif;
+}
+
+.font-Marcellus {
+	font-family: "Marcellus", sans-serif;
+	letter-spacing: 0.05em;
+	font-weight: 400;
+}
+
+.word-spacing-11 {
+	word-spacing: 0.11em;
+}
+
+html {
+	scroll-behavior: smooth;
+
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+}
+
+html::-webkit-scrollbar {
+	display: none;
+	/* Chrome, Safari, Opera*/
+}
+
+/* form 스트롤바 */
+#contactForm::-webkit-scrollbar {
+	width: 0.7rem;
+}
+
+#contactForm::-webkit-scrollbar-thumb {
+	height: 10%;
+	background: #2c88de;
+	border: 2px solid #60687f;
+}
+
+#contactForm::-webkit-scrollbar-track {
+	background: #60687f
+}
+
+/* 셀렉트 스크롤바 */
+#countise::-webkit-scrollbar {
+	width: 0.7rem;
+}
+
+#countise::-webkit-scrollbar-thumb {
+	height: 25%;
+	background: #2c88de;
+	border: 2px solid #fff;
+}
+
+#countise::-webkit-scrollbar-track {
+	background: #fff
+}
+
+/* 텍스트에리아 스크롤바 */
+#inquiryContent::-webkit-scrollbar {
+	width: 0.7rem;
+}
+
+#inquiryContent::-webkit-scrollbar-thumb {
+	height: 25%;
+	background: #2c88de;
+	border: 2px solid #60687f;
+}
+
+#inquiryContent::-webkit-scrollbar-track {
+	background: #60687f
+}
+
+/* about word map 스크롤바 */
+#wordMap::-webkit-scrollbar {
+	height: 1rem;
+}
+
+#wordMap::-webkit-scrollbar-thumb {
+	height: 25%;
+	background: #fff;
+	border: 5px solid #767B8D;
+}
+
+#wordMap::-webkit-scrollbar-track {
+	background: #767B8D
+}
+
+
+.moveScroll {
+	animation-name: moveScroll;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate-reverse;
+	animation-play-state: running;
+}
+
+@keyframes moveScroll {
+	from {
+		transform: translate(0)
+	}
+
+	to {
+		transform: translate(3.25rem, 0)
+	}
+}
+
+.moveScrollAbout {
+	animation-name: moveScroll;
+	animation-duration: 800ms;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate-reverse;
+	animation-play-state: running;
+}
+
+@keyframes moveScroll {
+	from {
+		transform: translate(0)
+	}
+
+	to {
+		transform: translate(1.75rem, 0)
+	}
+}
+
+.mapMarker {
+	animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+	from {
+		outline: 0px solid #cd9b80;
+		opacity: 0.8;
+	}
+
+	to {
+		outline: 1.2rem solid #cd9b80;
+		opacity: 0;
+	}
+}
+
+.mapMarker-white {
+	animation: pulse-white 1.5s infinite;
+}
+
+@keyframes pulse-white {
+	from {
+		outline: 0px solid #fff;
+		opacity: 0.8;
+	}
+
+	to {
+		outline: 1.2rem solid #fff;
+		opacity: 0;
+	}
+}
+
+.bg-position {
+	background-position: 50% 0;
+}
+
+.grid-cols-1rem1fr {
+	grid-template-columns: 1rem 1fr;
+}
+
+.tooltip::after {
+	content: "";
+	border-right: 0.8rem solid rgb(34 34 34 / 0.5);
+	border-top: 0.4rem solid transparent;
+	border-bottom: 0.4rem solid transparent;
+	position: absolute;
+	left: 1.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.duration-transform-1000 {
+	transition: transform 1s
+}
+
+.duration-width-300 {
+	transition: width 300ms;
+}
+
+/* 마우스 */
+#cursor.on {
+	background-color: rgba(204, 192, 166, 0.6);
+	width: 70px;
+	height: 70px;
+	
+	animation-name: rotateOn;
+	animation-fill-mode: forwards;
+	animation-duration: 1000ms;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+}
+#cursor.sideBar {
+	background-color: transparent;
+	border: 1px solid rgb(204, 192, 166);
+
+	animation-name: rotateOn;
+	animation-fill-mode: forwards;
+	animation-duration: 1000ms;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+}
+
+@keyframes rotateOn {
+	from {
+		transform: translateX(-50%) translateY(-50%) rotate(450deg);
+	}
+	to {
+		transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	}
+}
+
+p,li,h2,h3,h4,div{
+	cursor: default;
+}
+
+a > * , button > *{
+	pointer-events: none;
+}
+
+.sideBarDot {
+	pointer-events: painted;
+}

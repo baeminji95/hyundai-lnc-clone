@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <title>Hyundai L&C Flooring</title>
+  <!-- tailwindcss CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="relative">
+  <!-- 마우스 팔로워 -->
+  <div id="cursor"
+    class="pointer-events-none w-4 h-4 z-50 
+    fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 
+    bg-[#ccc0a6] rotate-45 duration-100">
+  </div>
+
+  <!-- main visual video -->
+  <div id="visualVideo" class="fixed -z-10">
+    <video class="w-screen h-screen object-cover z-0" src="/video/Hyundai_L&C_Wellness_Travel.mp4.mp4" muted autoplay
+      playsinline loop></video>
+  </div>
+
+  <!-- load 효과용 -->
+  <div id="load" class="fixed inset-0 z-30 bg-white duration-[3s]"></div>
+
+  <!-- header -->
+  <header class="fixed top-0 left-0 z-30 w-screen flex justify-between items-center px-5 pt-4 md:px-10 md:pt-8">
+    <!-- 로고 -->
+    <a href="#">
+      <img class="w-[7.2rem] md:w-[8.5rem]" src="/img/logo.png" alt="현대L&C로고" />
+    </a>
+
+    <!-- 검색 -->
+    <div class="flex items-start gap-5 pr-1 md:gap-7">
+      <button class="w-5 md:w-8">
+        <img src="/img/search.png" alt="돋보기"/>
+      </button>
+      <!-- menu Btn -->
+      <button class="flex flex-col group" onclick="hanldeMenu(true)">
+        <div class="w-[1.25rem] h-[2px] bg-white  "></div>
+        <div class="w-[0.7rem] h-[2px] my-[5px] bg-white group-hover:w-[1.25rem] duration-300 md:my-[6px]  "></div>
+        <div class="w-[1.25rem] h-[2px] bg-white  "></div>
+      </button>
+    </div>
+  </header>
+
+  <!-- menu -->
+  <article>
+    <!-- 에니메이션 용 subSheet -->
+    <div id="menuSubSheetOpen" class="fixed left-full duration-1000 inset-0 z-40 bg-[#222]"></div>
+    <div id="menuSubSheetClose" class="fixed hidden inset-0 z-50 bg-[#222]"></div>
+
+    <!-- mainSheet -->
+    <div id="menuMainSheet" class="hidden fixed left-full duration-1000 inset-0 z-40 bg-[#E7E2D5]">
+      <!-- menu header -->
+      <header class="flex justify-between items-center pt-5 pl-6 pr-4">
+        <!-- 로고 -->
+        <button onclick="hanldeMenu(false)">
+          <img class="w-[7.25rem]" src="/img/logo_b.png" alt="현대L&C로고 검정" />
+        </button>
+        <!-- 닫기버튼 -->
+        <button class="w-10 h-10 group px-2" onclick="hanldeMenu(false)">
+          <div class="w-6 h-[2px] bg-[#222] translate-y-[50%] rotate-45 group-hover:-rotate-45 duration-300"></div>
+          <div class="w-6 h-[2px] bg-[#222] -translate-y-[50%] -rotate-45 group-hover:rotate-45 duration-300"></div>
+        </button>
+      </header>
+
+      <!-- menu list -->
+      <ul
+        class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center gap-2 font-Marcellus text-[1.625rem] md:text-[2.2rem] lg:text-[2.8rem]">
+        <li class="menuList translate-x-12 opacity-0 duration-1000 hover:text-[#c9b288] hover:duration-300">
+          <a href="./about.html">About us</a>
+        </li>
+        <li class="menuList translate-x-12 opacity-0 duration-1000 hover:text-[#c9b288] hover:duration-300">
+          <a href="">Product</a>
+        </li>
+        <li class="menuList translate-x-12 opacity-0 duration-1000 hover:text-[#c9b288] hover:duration-300">
+          <a href="">Pesources</a>
+        </li>
+        <li class="menuList translate-x-12 opacity-0 duration-1000 hover:text-[#c9b288] hover:duration-300">
+          <a href="#contactUs" onclick="hanldeMenu(false)">Contact us</a>
+        </li>
+      </ul>
+
+      <!-- menu footer -->
+      <footer id="menuFooter"
+        class="fixed bottom-0 right-0 flex gap-5 items-center mr-6 my-3 text-[#222]/65 text-[0.85rem] font-medium tracking-wider opacity-0 duration-1000 translate-x-12">
+        <p class="uppercase hidden sm:block">
+          &#169; hyundai all Rights Reserved.
+        </p>
+
+        <!-- menu family site -->
+        <div class="flex justify-center items-center text-[0.7rem] md:text-[0.8rem] text-[#222] tracking-wide">
+          <input id="menuFamilySite" type="checkbox" class="peer hidden" />
+          <label for="menuFamilySite"
+            class="pl-4 pr-8 py-2 border border-[#222]/30 rounded-md duration-500 peer-checked:bg-white cursor-pointer z-30">
+            Family Site
+          </label>
+          <!-- menu arrow -->
+          <label id="menuFamSiteArrow" for="menuFamilySite"
+            class="z-30 absolute translate-x-12 mr-6 fill-[#222] duration-500 peer-checked:-scale-y-100 cursor-pointer">
+            <svg viewBox="0 0 90 56" xmlns="http://www.w3.org/2000/svg" class="w-2 h-2">
+              <path
+                d="M89.6139 10.7919C89.6139 11.3219 89.4039 11.8309 89.0279 12.2059L46.4159 54.8219C45.9289 55.3089 45.2529 55.4929 44.6239 55.3719C44.2429 55.3009 43.8779 55.1169 43.5829 54.8219L0.971866 12.2059C0.596866 11.8309 0.385866 11.3219 0.385866 10.7919C0.385866 10.2619 0.596866 9.75288 0.971866 9.37788L9.17287 1.17788C9.95387 0.396883 11.2199 0.396883 12.0009 1.17788L44.9999 34.1769L77.9989 1.17788C78.7799 0.396883 80.0459 0.396883 80.8269 1.17788L89.0279 9.37788C89.4029 9.75288 89.6139 10.2619 89.6139 10.7919Z" />
+            </svg>
+          </label>
+
+          <!-- menu fam site list -->
+          <label for="menuFamilySite"
+            class="absolute bottom-0 duration-500 opacity-0 peer-checked:bottom-[100%] peer-checked:opacity-100">
+            <ul class="bg-white border border-[#222]/30 rounded-md overflow-hidden">
+              <li class="px-2 py-[2px] border-b hover:font-bold">
+                <a href="/" class="list">Hyundai L&C(korean)</a>
+              </li>
+              <li class="px-2 py-[2px] border-b hover:font-bold">
+                <a href="/" class="list">HLUL</a>
+              </li>
+              <li class="px-2 py-[2px] border-b hover:font-bold">
+                <a href="/" class="list">HLCA</a>
+              </li>
+              <li class="px-2 py-[2px] border-b hover:font-bold">
+                <a href="/" class="list">HLSH</a>
+              </li>
+              <li class="px-2 py-[2px] border-b hover:font-bold">
+                <a href="/" class="list">HLEU</a>
+              </li>
+            </ul>
+          </label>
+        </div>
+      </footer>
+    </div>
+  </article>
+
+  <!-- side bar -->
+  <nav
+    class="fixed -left-28 bottom-40 z-30 flex items-center gap-[0.63rem] rotate-90 duration-100 lg:rotate-0 lg:left-10 lg:bottom-5">
+    <a href="#"><div class="sideBarDot w-[0.45rem] h-[0.45rem] cursor-pointer bg-white outline outline-2 outline-white"></div></a>
+
+    <a href="#aboutUs"><div class="sideBarDot w-[0.45rem] h-[0.45rem] cursor-pointer bg-white opacity-60 hover:opacity-100 outline-2 outline-white"></div></a>
+    
+    <a href="#newProduct"><div class="sideBarDot w-[0.45rem] h-[0.45rem] cursor-pointer bg-white opacity-60 hover:opacity-100 outline-2 outline-white"></div></a>
+
+    <a href="#LVT"><div class="sideBarDot w-[0.45rem] h-[0.45rem] cursor-pointer bg-white opacity-60 hover:opacity-100 outline-2 outline-white"></div></a>
+
+    <a href="#vinylsheet"><div class="sideBarDot w-[0.45rem] h-[0.45rem] cursor-pointer bg-white opacity-60 hover:opacity-100 outline-2 outline-white"></div></a>
+
+    <a href="#VCT"><div class="sideBarDot w-[0.45rem] h-[0.45rem] cursor-pointer bg-white opacity-60 hover:opacity-100 outline-2 outline-white"></div></a>
+
+    <a href="#contactUs"><div class="sideBarDot w-[0.45rem] h-[0.45rem] cursor-pointer bg-white opacity-60 hover:opacity-100 outline-2 outline-white"></div></a>
+    <!-- scroll -->
+    <p id="sideBarText" class="text-[0.9rem] leading-5 tracking-wider text-white/80 px-3">
+      SCROLL
+    </p>
+    <!-- 애니메이션 바, 레일 -->
+    <div id="MoveingBarRail" class="w-[5rem] h-[1px] relative bg-white/30">
+      <div id="MoveingBar" class="moveScroll w-7 h-[2px] absolute left-0 bottom-0 bg-white"></div>
+    </div>
+  </nav>
+
+  <main id="main" class="pt-[100vh] overflow-hidden">
+    <!-- about us -->
+    <article id="aboutUs" class="relative text-white lg:flex">
+      <div
+        class="w-screen h-[50vh] flex justify-center items-end bg-cover bg-[url('/img/about_img.jpg')] lg:w-[50vw] lg:h-screen">
+        <!-- 에니메이션용 sheet -->
+        <div id="AboutSubSheet" class="absolute inset-0 duration-1000 z-10 bg-[#222]"></div>
+      </div>
+      <!-- head,text -->
+      <h2 class="absolute top-1/2 left-1/2 -translate-y-full -translate-x-1/2
+          flex font-Marcellus text-[3rem] lg:text-[8rem]">
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">A</span>
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">b</span>
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">o</span>
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">u</span>
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">t</span>
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">&nbsp;</span>
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">U</span>
+        <span class="aboutUs opacity-0 translate-y-12 duration-500">s</span>
+      </h2>
+      <div
+        class="w-screen h-[50vh] bg-[#60687f] flex flex-col items-center lg:w-[50vw] lg:h-screen lg:pt-[50vh] lg:items-start lg:px-10">
+        <p id="aboutText" class="opacity-0 p-3 text-[0.85rem] tracking-wider leading-6 text-center translate-y-20 duration-500 
+            lg:text-start lg:text-[1rem] lg:leading-7 lg:p-0">
+          Hyundai L&amp;C strives to improve the quality of life in all
+          aspects of
+          human society and participates actively to preserve the environment,
+          therefore making our lives collectively healthier and wealthier
+        </p>
+
+        <a id="AboutBtn" href="/about.html" class="mt-2 group flex flex-col items-center opacity-0 translate-y-20 duration-500
+            lg:items-start">
+          <span class="  inline-block text-[0.8rem] font-bold tracking-wide duration-500 group-hover:tracking-[0.2em] 
+              lg:text-[1.2rem]">
+            Learn more
+          </span>
+          <div class="  w-[4.5rem] h-[3px] bg-white my-2 group-hover:w-[7rem] duration-500
+              lg:w-[7rem] lg:group-hover:w-[9.5rem]"></div>
+        </a>
+      </div>
+    </article>
+
+    <!-- new product -->
+    <article id="newProduct" class="w-screen h-[50vh] py-[6.25rem] pr-8 bg-cover bg-[url('/img/product_bg.jpg')] text-white md:py-[3rem] duration-500
+        lg:h-screen">
+      <div class="flex justify-between items-center ml-12 lg:justify-start">
+        <h2 class="flex font-Marcellus text-[3rem] lg:text-[6rem]">
+          <span class="newProduct opacity-0 translate-y-12 duration-500">N</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">e</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">w</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">&nbsp;</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">P</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">r</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">o</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">d</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">u</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">c</span>
+          <span class="newProduct opacity-0 translate-y-12 duration-500">t</span>
+        </h2>
+        <!-- button -->
+        <div id="newProductBtns" class="ml-20 opacity-0 translate-y-20 duration-500">
+          <button onclick="move(-1)" class="w-7 mr-4 lg:w-12 py-1">
+            <img src="/img/prevArrow.png" alt="이전 버튼" class=" "/>
+          </button>
+          <button onclick="move(1)" class="w-7 lg:w-12 py-1">
+            <img src="/img/nextArrow.png" alt="다음 버튼" class=" "/>
+          </button>
+        </div>
+      </div>
+
+      <!-- 무한루프 캐러셀 -->
+      <div id="carousel" class="relative w-[95%] h-[60%] mx-9 mt-5 overflow-hidden
+      lg:max-h-[30vw] opacity-0 translate-y-20 duration-500">
+        <div id="carouselContainer" class="flex gap-[3%] w-full h-full absolute -left-[50%] duration-1000">
+          <!-- 무한루프용 맨앞 -->
+          <!-- 6 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/1135.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(0)" onmouseleave="leaveEffect(0)">
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem] lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_1135
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem] ">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+
+          <!-- 6개 translate 225씩 -->
+          <!-- 1 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/751.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(1)" onmouseleave="leaveEffect(1)">
+
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem]
+            lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_751
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem]">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+          <!-- 2 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/726.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(2)" onmouseleave="leaveEffect(2)">
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem]
+             lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_751
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem]">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+          <!-- 3 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/753.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(3)" onmouseleave="leaveEffect(3)">
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem] lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_751
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem]">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+          <!-- 4 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/1109.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(4)" onmouseleave="leaveEffect(4)">
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem] lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_751
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem]">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+          <!-- 5 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/1131.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(5)" onmouseleave="leaveEffect(5)">
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem] lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_751
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem]">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+          <!-- 6 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/1135.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(6)" onmouseleave="leaveEffect(6)">
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem] lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_751
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem]">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+          <!-- 무한루프용 맨뒤 -->
+          <!-- 1 -->
+          <div class="Carousel border-2 min-w-[47%] h-full relative bg-[url('/img/751.jpg')] bg-cover border-[#c3bab2]"
+            onmouseover="hoverEffect(7)" onmouseleave="leaveEffect(7)">
+            <div class="absolute inset-0 bg-[#666]/20"></div>
+            <!-- 동그랗게 채워지는 효과용 -->
+            <div class="hoverEffect w-0 h-0 rounded-bl-full absolute right-0 bg-[#666]/20 duration-300 ease-linear">
+            </div>
+
+            <span class="absolute border border-white mx-2 mt-3 px-2 py-[2px] text-[0.7rem] lg:text-[1.1rem]">
+              [VCT] Deluxe Gold_751
+            </span>
+            <a href="#" class="absolute bottom-0 right-0 pr-3 pb-5 font-Marcellus text-end text-[1.06rem] lg:text-[1.5rem]">
+              CALIFORNIA PEBBLE
+            </a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </article>
+
+    <!-- product -->
+    <article class="w-screen bg-[#e8e2d4] pt-[5rem] text-[#222]] tracking-wider
+">
+      <!-- LVT -->
+      <section id="LVT" class="lg:h-screen relative">
+        <div class="relative flex justify-end">
+          <!-- 효과용 sheet -->
+          <div id="lvtSubSheet" class="w-[90vw] h-[25rem] bg-[#cd9b80] -translate-x-[100vw] duration-1000
+    lg:h-screen lg:w-[80vw]"></div>
+          <div id="lvtMainImg" class="w-[82vw] h-[25rem] absolute right-0 bg-cover bg-position bg-[url('/img/lvt_img.jpg')] -translate-x-[100vw] duration-1000
+    lg:h-screen lg:w-[70vw]"></div>
+        </div>
+        <!-- LVT text & btn -->
+        <div class="py-14 px-10 lg:absolute lg:top-1/2 lg:-translate-y-1/2">
+          <p id="lvtHext1" class="text-[0.875rem] opacity-0 -translate-x-12 duration-500 font-semibold 
+              lg:text-[1rem] lg:font-bold">
+            Traditional natural oak to unique vibrant woods
+          </p>
+          <h2 class="flex font-Marcellus text-[3rem] mb-4 lg:text-[6rem]">
+            <span class="LVT opacity-0 -translate-x-12 duration-500">L</span>
+            <span class="LVT opacity-0 -translate-x-12 duration-500">V</span>
+            <span class="LVT opacity-0 -translate-x-12 duration-500">T</span>
+          </h2>
+          <p id="lvtHext2" class="text-[0.815rem] leading-7 opacity-0 -translate-x-12 duration-500 
+              lg:text-[0.95rem] lg:font-semibold">
+            Hyundai L&amp;C Crescendo Luxury Vinyl Tile collection presents
+            <br />
+            real wood designs well suited for a variety of applications.
+          </p>
+
+          <a id="lvtBtn" href="#"
+            class="group inline-flex flex-col items-center mt-4 opacity-0 -translate-x-12 duration-500 lg:items-start">
+            <span class="  inline-block text-[#cd9b80] text-[0.8rem] font-bold tracking-wide group-hover:tracking-[0.2em] duration-500 
+                lg:text-[1.2rem] lg:font-extrabold">
+              Learn more
+            </span>
+            <div class="  w-[4.5rem] h-[3px] bg-[#cd9b80] my-2 group-hover:w-[7rem] duration-500
+                lg:w-[7rem] lg:group-hover:w-[9.5rem]"></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- vinylsheet -->
+      <section id="vinylsheet" class="relative">
+        <div class="relative flex mt-7 lg:mt-20">
+          <div id="vinylsheetMainImg" class="w-[82vw] h-[25rem] bg-cover z-10 bg-position bg-[url('/img/sheet_img.jpg')] translate-x-[100vw] duration-1000
+              lg:h-screen lg:w-[70vw]"></div>
+          <!-- 효과용 sheet -->
+          <div id="vinylsheetSubSheet" class="w-[90vw] h-[25rem] absolute top-8 bg-[#c9b288] translate-x-[100vw] duration-1000
+              lg:top-0 lg:h-screen lg:w-[80vw]"></div>
+        </div>
+        <!-- vinylsheet text & btn -->
+        <div class="py-14 px-7 text-end
+          lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 lg:z-10">
+          <p id="vinylsheetText1" class="text-[0.875rem] opacity-0 translate-x-12 duration-500
+              lg:text-[1rem] lg:font-bold">
+            Warm, quiet and beautiful
+          </p>
+          <h2 class="flex justify-end font-Marcellus text-[3rem] mb-4 lg:text-[6rem]">
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">V</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">i</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">n</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">y</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">l</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">s</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">h</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">e</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">e</span>
+            <span class="vinylsheet opacity-0 translate-x-12 duration-500">t</span>
+          </h2>
+          <p id="vinylsheetText2" class="text-[0.815rem] leading-7 opacity-0 translate-x-12 duration-500 
+              lg:text-[0.95rem] lg:font-semibold">
+            Hyundai L&amp;C Vinyl sheet flooring features various realistic
+            <br />
+            wood design and outstanding function for your better life.
+          </p>
+
+          <a id="vinylsheetBtn" href="#"
+            class="group inline-flex flex-col items-center mt-4 opacity-0 translate-x-12 duration-500">
+            <span class="opacity-90 inline-block text-[#c9b288] text-[0.8rem] font-bold tracking-wide group-hover:tracking-[0.2em] duration-500
+                lg:text-[1.2rem] lg:font-extrabold">
+              Learn more
+            </span>
+            <div class="w-[4.5rem] h-[3px] bg-[#c9b288] my-2 group-hover:w-[7rem] duration-500
+                lg:w-[7rem] lg:group-hover:w-[9.5rem]"></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- VCT -->
+      <section id="VCT" class="relative mt-7
+        lg:flex lg:flex-col lg:justify-end items-center lg:w-screen lg:h-screen">
+        <!-- 효과용 sheet -->
+        <div id="vctSubSheet" class="w-screen h-[25rem] bg-[#96b37b] translate-y-[10rem] duration-1000
+            lg:h-[65%] lg:max-w-[80vw]"></div>
+        <div id="vctMainImg" class="w-screen h-[22.5rem] absolute bottom-0 bg-cover bg-position bg-[url('/img/vct_img.jpg')] translate-y-[10rem] duration-1000
+            lg:h-[60%] lg:max-w-[80vw]"></div>
+        <!-- VCT text & btn -->
+        <div class="absolute top-0 px-10 text-white text-center
+          lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-y-1/2 lg:-translate-x-1/2 lg:z-10 lg:mt-8">
+          <h2 class="flex justify-center font-Marcellus text-[3rem]
+            lg:text-[6rem]">
+            <span class="VCT opacity-0 translate-y-12 duration-500">V</span>
+            <span class="VCT opacity-0 translate-y-12 duration-500">C</span>
+            <span class="VCT opacity-0 translate-y-12 duration-500">T</span>
+          </h2>
+          <p id="vctText1" class="text-[0.875rem] opacity-0 translate-y-12 duration-500
+              lg:text-[1rem] lg:font-bold">
+            Highly recommended as a cost effective flooring
+          </p>
+          <p id="vctText2" class="mt-6 text-[0.815rem] leading-7 opacity-0 translate-y-12 duration-500
+              lg:text-[0.95rem] lg:font-semibold">
+            Hyundai L&amp;C Vinyl Composition Tile is highly recommended as a
+            cost effective flooring solution for public and commercial
+            buildings such as office, supermarkets, retail stores, schools and
+            storage areas
+          </p>
+
+          <a id="vctBtn" href="#"
+            class="group inline-flex flex-col items-center mt-4 opacity-0 translate-y-12 duration-500">
+            <span class="opacity-90 inline-block text-[#96b37b] text-[0.8rem] font-bold tracking-wide group-hover:tracking-[0.2em] duration-500
+                lg:text-[1.2rem] lg:font-extrabold">
+              Learn more
+            </span>
+            <div class=" w-[4.5rem] h-[3px] bg-[#96b37b] my-2 group-hover:w-[7rem] duration-500
+                lg:w-[7rem] lg:group-hover:w-[9.5rem]"></div>
+          </a>
+        </div>
+      </section>
+    </article>
+
+    <!-- contact -->
+    <article id="contactUs" class="w-screen relative pt-[3.75rem] px-[1.56rem] bg-[#60687f] text-white text-[0.8rem] tracking-wider pb-[10rem] 
+      lg:h-screen lg:flex lg:gap-10 lg:flex-nowrap lg:pt-[6rem] lg:pb-[4rem] lg:px-[3rem] lg:font-semibold">
+      <section class="lg:flex lg:flex-col lg:justify-center ">
+        <h2 class="flex font-Marcellus text-[3rem] lg:text-[4rem]">
+          <span class="contact opacity-0 translate-x-12 duration-500">C</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">o</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">n</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">t</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">a</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">c</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">t</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">&nbsp;</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">u</span>
+          <span class="contact opacity-0 translate-x-12 duration-500">s</span>
+        </h2>
+
+        <p id="contactText1" class="leading-7 opacity-0 translate-x-20 duration-1000">
+          13F, East Central Tower, 1077, Cheonho-daero,
+          <br class="hidden lg:block" />
+          Gangdong-gu, Seoul, 05340, Korea
+        </p>
+
+        <div id="contact"
+          class="grid grid-cols-1rem1fr items-center gap-2 mt-5 text-white/70 opacity-0 translate-x-20 duration-1000">
+          <img src="/img/tel.png" alt="전화기 아이콘" />
+          <p>822.6364.7643</p>
+          <img src="/img/fax.png" alt="팩스 아이콘" />
+          <p>822.6364.7609</p>
+          <img src="/img/email.png" alt="이메일 아이콘" />
+          <p>rjhun84@hyundailnc.com</p>
+        </div>
+
+        <!-- 위치용 빈칸 -->
+        <div class="shrink h-60 hidden lg:block"></div>
+      </section>
+
+      <!-- top btn -->
+      <a id="contactBtn" href="#" class="group inline-flex flex-col my-9 opacity-0 translate-x-20 duration-500 
+      lg:absolute lg:top-0 right-[10rem] lg:z-30 lg:items-end">
+        <span class="opacity-90 inline-block text-base text-[#e8e2d4] font-bold tracking-wide group-hover:tracking-[0.2em] duration-500
+        ">
+          BACK TO TOP
+        </span>
+        <div class="w-[8rem] h-[3px] bg-[#e8e2d4] my-2 group-hover:w-[9.5rem] duration-500
+        "></div>
+      </a>
+
+      <!-- form -->
+      <form id="contactForm" class="grow text-white/70 flex flex-col gap-3 border border-white/30 p-2
+      overflow-y-auto">
+        <!-- county -->
+        <div class="border border-white/30 px-[0.94rem]">
+          <p class="px-[0.65rem] py-3
+          lg:py-[0.5rem]">
+            County <span class="text-[#2c88de]">*</span>
+          </p>
+          <div class="w-full h-[1px] bg-white/30"></div>
+          <div onclick="openCountyList()"
+            class="relative px-[0.65rem] py-3 flex justify-between items-center lg:py-[0.5rem]">
+            <p id="selectedCounty">Please Choose</p>
+            <button type="button" id="selectCountyBtn" class="w-3">
+              <svg viewBox="0 0 90 56" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M89.6139 10.7919C89.6139 11.3219 89.4039 11.8309 89.0279 12.2059L46.4159 54.8219C45.9289 55.3089 45.2529 55.4929 44.6239 55.3719C44.2429 55.3009 43.8779 55.1169 43.5829 54.8219L0.971866 12.2059C0.596866 11.8309 0.385866 11.3219 0.385866 10.7919C0.385866 10.2619 0.596866 9.75288 0.971866 9.37788L9.17287 1.17788C9.95387 0.396883 11.2199 0.396883 12.0009 1.17788L44.9999 34.1769L77.9989 1.17788C78.7799 0.396883 80.0459 0.396883 80.8269 1.17788L89.0279 9.37788C89.4029 9.75288 89.6139 10.2619 89.6139 10.7919Z"
+                  fill="white" />
+              </svg>
+            </button>
+            <!-- 나라 선택 리스트 -->
+            <div id="countise"
+              class="w-full max-h-0 overflow-auto absolute top-full left-1/2 -translate-x-1/2 text-[0.75rem] bg-white text-[#60687f] duration-500">
+              <ul class="border p-2">
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Korea
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Armenia
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Australia
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Belgium
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Brazil
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Canada
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  China
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Dominica
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Egypt
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  France
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Greece
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Hong Kong
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Hungary
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  India
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Italy
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Kazakhstan
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Japan
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Laos
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Malaysia
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Mexico
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Netherlands
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  New Zealand
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Oman
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Peru
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Poland
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Qatar
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Senegal
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Spain
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Taiwan
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Thailand
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  United Arab Emirates
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  United Kingdom
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  United States
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Vietnam
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Western Sahara
+                </li>
+                <li class="px-2 border-b hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Yemen
+                </li>
+                <li class="px-2 hover:bg-[#60687f] hover:text-white" onclick="selectCounty(this)">
+                  Zambia
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- company name -->
+        <div class="border border-white/30 px-[0.94rem]">
+          <p class="px-[0.65rem] py-3 lg:py-[0.5rem]">
+            Company Name <span class="text-[#2c88de]">*</span>
+          </p>
+          <div class="w-full h-[1px] bg-white/30"></div>
+          <input id="companyName" type="text" spellcheck="false" class="input w-full px-[0.65rem] py-3 lg:py-[0.5rem] bg-inherit outline-none" />
+        </div>
+
+        <!-- contact name -->
+        <div class="border border-white/30 px-[0.94rem] ">
+          <p class="px-[0.65rem] py-3 lg:py-[0.5rem]">
+            Contact Name <span class="text-[#2c88de]">*</span>
+          </p>
+          <div class="w-full h-[1px] bg-white/30"></div>
+          <input id="contactName" type="text" spellcheck="false" class="input w-full px-[0.65rem] py-3 bg-inherit outline-none lg:py-[0.5rem]" />
+        </div>
+
+        <!-- email -->
+        <div class="border border-white/30 px-[0.94rem]">
+          <p class="px-[0.65rem] py-3 lg:py-[0.5rem]">
+            Email <span class="text-[#2c88de]">*</span>
+          </p>
+          <div class="w-full h-[1px] bg-white/30"></div>
+          <div class="w-full flex items-center">
+            <input id="emailF" type="text" maxlength="20" spellcheck="false"
+              class="input w-[50%] px-[0.65rem] py-3 bg-inherit outline-none lg:py-[0.5rem]" />
+            <p>@</p>
+            <input id="emailB" type="text" maxlength="20" spellcheck="false"
+              class="input w-[50%%] px-[0.65rem] py-3 bg-inherit outline-none lg:py-[0.5rem]" />
+          </div>
+        </div>
+
+        <!-- inquiry contents -->
+        <div class="border border-white/30 px-[0.94rem]">
+          <p class="px-[0.65rem] py-3 lg:py-[0.5rem]">
+            Inquiry Contents <span class="text-[#2c88de]">*</span>
+          </p>
+          <div class="w-full h-[1px] bg-white/30"></div>
+          <textarea name="" id="inquiryContent" cols="30" rows="5" spellcheck="false"
+            class="input w-full px-[0.65rem] py-[0.75rem] bg-inherit outline-none resize-nonelg:py-[0.5rem]"></textarea>
+        </div>
+
+        <!-- spam check -->
+        <div class="border border-white/30 px-[0.94rem]">
+          <p class="px-[0.65rem] py-3 lg:py-[0.5rem]">
+            Spam check <span class="text-[#2c88de]">*</span>
+          </p>
+          <div class="w-full h-[1px] bg-white/30"></div>
+          <div class="flex">
+            <img id="spamCheckImg" class="pr-[0.65rem] py-3 lg:py-[0.5rem]" src="/img/norobot_image_7ce8af.png"
+              alt="7ce8af" />
+            <input id="spamCheck" type="text" maxlength="10" spellcheck="false" class="input grow px-[0.65rem] my-3 bg-inherit outline-none" />
+          </div>
+          <div class="flex items-center mb-3 lg:mb-[0.5rem]">
+            <p>* Please enter the spam check code on the left.</p>
+            <button onclick="changeSpamCheck()" type="button" class="hover:text-[#2c88de] pl-2">&#91;Refresh&#93;</button>
+          </div>
+        </div>
+
+        <!-- 개인정보 동의 -->
+        <div class="flex items-center text-[0.7rem]">
+          <input id="isAgree" type="checkbox" class="hidden peer" />
+          <label for="isAgree"
+            class="inline-flex w-5 h-5 m-3 border rounded-sm bg-cover peer-checked:bg-[url('./img/check.png')] cursor-pointer">
+          </label>
+          <label for="isAgree" class="cursor-pointer">I agree to the collection and use of personal information.</label>
+        </div>
+
+        <!-- 빈칸있을 때 알림문구 -->
+        <p class="text-[#2c88de] font-bold text-end mt-2 lg:mr-7">
+          <span id="alertMessage" class="bg-white duration-300 px-1 opacity-0"></span>
+        </p>
+
+        <!-- submit btn -->
+        <div class="flex justify-end mt-2 lg:mr-7">
+          <button class="group inline-flex flex-col items-end">
+            <span class="opacity-90 inline-block text-[#e8e2d4] text-[0.8rem] font-bold tracking-wide group-hover:tracking-[0.2em] duration-500
+              lg:text-[1.2rem] lg:font-extrabold">
+              Contact Us
+            </span>
+            <div class="w-[4.6rem] h-[3px] bg-[#e8e2d4] my-2 group-hover:w-[7rem] duration-500
+            lg:w-[7rem] lg:group-hover:w-[9.5rem]"></div>
+          </button>
+        </div>
+      </form>
+      <!-- 문의 완료 메시지 -->
+      <div id="completedContainer" class="hidden grow pt-[5rem] flex-col items-center">
+        <p id="completedMessage" class="text-center text-[1.2rem] "></p>
+          <div class="flex justify-center">
+            <button 
+            onclick="formOpen()"
+            class="group inline-flex flex-col items-center">
+              <span class="mt-5 opacity-90 inline-block text-[#e8e2d4] text-[1.3rem] font-bold tracking-wide group-hover:tracking-[0.2em] duration-500
+              lg:text-[1.5rem] lg:font-extrabold">
+              Additional inquiry
+            </span>
+            <div class="w-[9rem] h-[3px] bg-[#e8e2d4] my-2 group-hover:w-[13.5rem] duration-500
+            lg:w-[13rem] lg:group-hover:w-[19.5rem]"></div>
+          </button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- footer -->
+  <footer
+    class="fixed bottom-0 right-0 z-30 flex items-center gap-5 md:px-10 md:py-5 p-0 text-white/65 text-[0.85rem] font-medium tracking-wider">
+    <p class="uppercase hidden md:block">
+      &#169; hyundai all Rights Reserved.
+    </p>
+
+    <!-- family site -->
+    <div class="relative flex justify-center items-center mr-6 text-[0.7rem] md:text-[0.8rem] tracking-wide">
+      <input id="familySite" type="checkbox" class="peer hidden" />
+      <label for="familySite"
+        class="z-30 pl-4 pr-8 pt-[0.3rem] duration-1000 border-white/30 rounded-t-md border peer-checked:bg-white peer-checked:text-[#60687f] md:py-[0.3rem] md:rounded-md">
+        Family Site
+      </label>
+      <!-- arrow -->
+      <label for="familySite"
+        class="z-30 absolute bottom-[0.4rem] right-4 opacity-65 fill-white duration-500 peer-checked:fill-[#60687f] peer-checked:-scale-y-100 md:top-[50%] md:-translate-y-1/2">
+        <svg viewBox="0 0 90 56" xmlns="http://www.w3.org/2000/svg" class="w-2 h-2">
+          <path
+            d="M89.6139 10.7919C89.6139 11.3219 89.4039 11.8309 89.0279 12.2059L46.4159 54.8219C45.9289 55.3089 45.2529 55.4929 44.6239 55.3719C44.2429 55.3009 43.8779 55.1169 43.5829 54.8219L0.971866 12.2059C0.596866 11.8309 0.385866 11.3219 0.385866 10.7919C0.385866 10.2619 0.596866 9.75288 0.971866 9.37788L9.17287 1.17788C9.95387 0.396883 11.2199 0.396883 12.0009 1.17788L44.9999 34.1769L77.9989 1.17788C78.7799 0.396883 80.0459 0.396883 80.8269 1.17788L89.0279 9.37788C89.4029 9.75288 89.6139 10.2619 89.6139 10.7919Z" />
+        </svg>
+      </label>
+
+      <!-- fam site list -->
+      <label for="familySite"
+        class="w-full max-h-0 absolute bottom-full opacity-0 duration-1000 text-[#60687f] peer-checked:max-h-60 peer-checked:opacity-100">
+        <ul class="bg-white border rounded-md overflow-hidden">
+          <li class="px-2 py-[2px] border-b hover:font-bold">
+            <a href="/" class="list">Hyundai L&C(korean)</a>
+          </li>
+          <li class="px-2 py-[2px] border-b hover:font-bold">
+            <a href="/" class="list">HLUL</a>
+          </li>
+          <li class="px-2 py-[2px] border-b hover:font-bold">
+            <a href="/" class="list">HLCA</a>
+          </li>
+          <li class="px-2 py-[2px] border-b hover:font-bold">
+            <a href="/" class="list">HLSH</a>
+          </li>
+          <li class="px-2 py-[2px] border-b hover:font-bold">
+            <a href="/" class="list">HLEU</a>
+          </li>
+        </ul>
+      </label>
+    </div>
+  </footer>
+
+  <!-- gsap -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <!-- script -->
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
