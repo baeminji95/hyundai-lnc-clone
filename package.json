@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://baeminji95.github.io/hyundai-lnc-clone/",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
