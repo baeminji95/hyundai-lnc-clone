@@ -496,10 +496,10 @@ function formOpen() {
 
 let spamCheckImgIndex = 0;
 const spamCheckImgs = [
-  { src: "/img/norobot_image_7ce8af.png", alt: "7ce8af" },
-  { src: "/img/norobot_image_79dcad4.png", alt: "79dcad4" },
-  { src: "/img/norobot_image_46487c.png", alt: "46487c" },
-  { src: "/img/norobot_image_c5f71e.png", alt: "c5f71e" }
+  { src: "./img/norobot_image_7ce8af.png", alt: "7ce8af" },
+  { src: "./img/norobot_image_79dcad4.png", alt: "79dcad4" },
+  { src: "./img/norobot_image_46487c.png", alt: "46487c" },
+  { src: "./img/norobot_image_c5f71e.png", alt: "c5f71e" }
 ]
 
 function changeSpamCheck() {

@@ -123,15 +123,15 @@ function handleScroll() {
   const visualVT = visual.getBoundingClientRect().top;
   console.log(visualVT);
   if (visualVT === 0) {
-    headerLogo.src = "/img/logo.png";
-    HeaderSearch.src = "/img/search.png";
+    headerLogo.src = "./img/logo.png";
+    HeaderSearch.src = "./img/search.png";
     for (i = 0; i < 3; i++) {
       headerBars[i].classList.replace("bg-[#222]", "bg-white");
     }
     aboutHeader.classList.remove("bg-white" , "shadow-md", "shadow-[#222]/30");
   } else {
-    headerLogo.src = "/img/logo_b.png";
-    HeaderSearch.src = "/img/search_b.png";
+    headerLogo.src = "./img/logo_b.png";
+    HeaderSearch.src = "./img/search_b.png";
     for (i = 0; i < 3; i++) {
       headerBars[i].classList.replace("bg-white", "bg-[#222]");
     }
