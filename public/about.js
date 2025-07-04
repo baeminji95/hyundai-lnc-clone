@@ -20,10 +20,9 @@ function cursormove(e) {
     top: e.clientY
   })
 
-  console.log(e.target);
+  // console.log(e.target);
   // 특정 엘리먼트 호버시 효과
   if((e.target.tagName === "BUTTON" || e.target.tagName === "A") && !e.target.classList.contains("map")){
-  
     cursor.classList.add("on")
   } else {
     cursor.classList.remove("on")
@@ -72,7 +71,7 @@ let isOpenMenu = false;
 function hanldeMenu(boolean) {
   isOpenMenu = boolean;
   if (isOpenMenu) {
-    console.log("open menu");
+    // console.log("open menu");
     // main
     menuMainSheet.classList.remove("hidden");
     // sub
@@ -92,7 +91,7 @@ function hanldeMenu(boolean) {
       moveEffect(menuFooter, "100", "", "x", "12");
     }, 600);
   } else {
-    console.log("close menu");
+    // console.log("close menu");
     menuMainSheet.classList.add("hidden");
     menuSubSheetClose.classList.remove("hidden");
     setTimeout(function () {
@@ -121,7 +120,7 @@ window.addEventListener("scroll", handleScroll);
 let prevScrollTop = 0;
 function handleScroll() {
   const visualVT = visual.getBoundingClientRect().top;
-  console.log(visualVT);
+  // console.log(visualVT);
   if (visualVT === 0) {
     headerLogo.src = "./img/logo.png";
     HeaderSearch.src = "./img/search.png";
@@ -140,7 +139,7 @@ function handleScroll() {
 }
 
 const scrollTop = document.documentElement.scrollTop;
-console.log("이전", prevScrollTop + "/ 현재", scrollTop);
+// console.log("이전", prevScrollTop + "/ 현재", scrollTop);
 
 console.log(prevScrollTop > scrollTop);
 if (prevScrollTop < scrollTop) {
@@ -154,6 +153,7 @@ if (prevScrollTop < scrollTop) {
 
 
 function handleOpenDetail(index) {
+  console.log("?")
   if(vw > 1280){
     for(let i=0; i<mapDetails.length; i++){
       if(i === index){
