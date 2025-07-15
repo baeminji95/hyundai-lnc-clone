@@ -141,7 +141,7 @@ function handleScroll() {
 const scrollTop = document.documentElement.scrollTop;
 // console.log("이전", prevScrollTop + "/ 현재", scrollTop);
 
-console.log(prevScrollTop > scrollTop);
+// console.log(prevScrollTop > scrollTop);
 if (prevScrollTop < scrollTop) {
     aboutHeader.classList.add("-translate-y-full");
     aboutHeader.classList.remove("shadow-md", "shadow-[#222]/30");
@@ -153,7 +153,6 @@ if (prevScrollTop < scrollTop) {
 
 
 function handleOpenDetail(index) {
-  console.log("?")
   if(vw > 1280){
     for(let i=0; i<mapDetails.length; i++){
       if(i === index){

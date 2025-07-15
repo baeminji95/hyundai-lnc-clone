@@ -15,15 +15,18 @@ const carouselItmes = document.getElementsByClassName("Carousel");
 const inputs = document.getElementsByClassName("input")
 
 
-// let prevScrollTop = 0;\
 let sideBarIndex = 0;
 let carouselIndex = 1;
 
-//확인용
-window.addEventListener("click", function (e) {
-  console.log(e.target);
-  console.log(this);
+// 뷰포트 크기
+let vh = document.documentElement.clientHeight;
+let vw = document.documentElement.clientWidth;
+// 창 리사이즈 감지
+window.addEventListener("resize", function () {
+  vh = document.documentElement.clientHeight;
+  vw = document.documentElement.clientWidth;
 });
+
 
 window.document.addEventListener('mousemove', cursormove);
 // 마우스 따라다니는 마름모
@@ -33,14 +36,13 @@ function cursormove(e) {
     top: e.clientY
   })
 
-  // console.log(e.target.tagName);
   // 특정 엘리먼트 호버시 효과
-  if(e.target.tagName === "BUTTON" || e.target.tagName === "A"){
+  if (e.target.tagName === "BUTTON" || e.target.tagName === "A") {
     cursor.classList.add("on")
   } else {
     cursor.classList.remove("on")
   }
-  if(e.target.classList.contains("sideBarDot") || e.target.classList.contains("list")){
+  if (e.target.classList.contains("sideBarDot") || e.target.classList.contains("list")) {
     cursor.classList.add("sideBar")
   } else {
     cursor.classList.remove("sideBar")
@@ -50,29 +52,27 @@ function cursormove(e) {
 
 
 // load시 화면 천천히 나타내는 효과
-window.addEventListener("load", function () {
+window.addEventListener("load", () => {
   load.classList.add("opacity-0");
-  this.setTimeout(function () {
-    load.classList.add("hidden");
-  }, 1500);
+  setTimeout(() => load.classList.add("hidden"), 1500);
 });
 
 // h2 애니메이션
 function h2Effect(textArr, where, to, howFar) {
-  for (let i = 0; i < textArr.length; i++) {
-    setTimeout(function () {
-      textArr[i].classList.replace("opacity-0", "opacity-100");
-      textArr[i].classList.remove(`${where}translate-${to}-${howFar}`);
-    }, 100 * i);
-  }
+  Array.from(textArr).forEach((element, i) => {
+    setTimeout(() => {
+      element.classList.replace("opacity-0", "opacity-100");
+      element.classList.remove(`${where}translate-${to}-${howFar}`);
+    }, 100 * i );
+  });
 }
 // h2 애니메이션 reset
-function h2EffectReset(textArr, where, to, howFar) {
-  for (let i = 0; i < textArr.length; i++) {
-    textArr[i].classList.replace("opacity-100", "opacity-0");
-    textArr[i].classList.add(`${where}translate-${to}-${howFar}`);
-  }
-}
+// function h2EffectReset(textArr, where, to, howFar) {
+//   Array.from(textArr).forEach((element, i) => {
+//     element.classList.replace("opacity-100", "opacity-0");
+//     element.classList.add(`${where}translate-${to}-${howFar}`);
+//   })
+// }
 
 //기타 애니메이션
 function moveEffect(element, opacity, where, to, howFar) {
@@ -103,7 +103,7 @@ let isOpenMenu = false;
 function hanldeMenu(boolean) {
   isOpenMenu = boolean;
   if (isOpenMenu) {
-    console.log("open menu");
+    // console.log("open menu");
     // main
     menuMainSheet.classList.remove("hidden");
     // sub
@@ -123,7 +123,7 @@ function hanldeMenu(boolean) {
       moveEffect(menuFooter, "100", "", "x", "12");
     }, 600);
   } else {
-    console.log("close menu");
+    // console.log("close menu");
     menuMainSheet.classList.add("hidden");
     menuSubSheetClose.classList.remove("hidden");
     setTimeout(function () {
@@ -148,14 +148,6 @@ function hanldeMenu(boolean) {
   }
 }
 
-// 뷰포트 크기
-let vh = document.documentElement.clientHeight;
-let vw = document.documentElement.clientWidth;
-// 창 리사이즈 감지
-window.addEventListener("resize", function () {
-  vh = document.documentElement.clientHeight;
-  vw = document.documentElement.clientWidth;
-});
 
 // 스크롤 감지
 window.addEventListener("scroll", handleScroll);
@@ -193,19 +185,16 @@ function handleScroll() {
   } else {
     sideBarIndex = 0;
   }
-  console.log("sideBarIndex", sideBarIndex);
+  // console.log("sideBarIndex", sideBarIndex);
 
   //해당 위치에 접근하면 sideBar dot 크기 변화
-  for (let i = 0; i < sideBarDots.length; i++) {
-    const dot = sideBarDots[i];
-    if (i === sideBarIndex) {
-      dot.classList.add("outline");
-      dot.classList.remove("opacity-60", "hover:opacity-100");
-    } else {
-      dot.classList.remove("outline");
-      dot.classList.add("opacity-60", "hover:opacity-100");
-    }
-  }
+  sideBarDots.forEach((dot, i) => {
+    const isCurrentIndex = i === sideBarIndex;
+
+    dot.classList.toggle("outline", isCurrentIndex);
+    dot.classList.toggle("opacity-60", isCurrentIndex);
+    dot.classList.toggle("hover:opacity-100", isCurrentIndex);
+  });
 
   // product 구간 색변환
   if (sideBarIndex === 3 || sideBarIndex === 4 || sideBarIndex === 5) {
@@ -357,7 +346,7 @@ function CarouselEffect() {
     // 마지막으로 돌아가는 모습을 안보이게하기위해 duration 제거
     carouselContainer.classList.remove("duration-1000");
     carouselContainer.classList.replace("-left-[0%]", "-left-[300%]");
-    carouselIndex = 
+    carouselIndex = 5
     setTimeout(function () {
       carouselContainer.classList.add("duration-1000");
       moveCarousel()
@@ -365,16 +354,16 @@ function CarouselEffect() {
   } else {
     moveCarousel();
   }
-}  
+}
 //캐러셀 이동 버튼 함수
 function move(num) {
   carouselIndex += num
-  console.log("carouselIndex: ", carouselIndex);
+  // console.log("carouselIndex: ", carouselIndex);
   CarouselEffect();
-  }
+}
 // 자동 넘김을 위한 setInterval
 let autoMoveCarousel = setInterval(function () {
-  carouselIndex ++
+  carouselIndex++
   CarouselEffect();
 }, 3000)
 
@@ -383,7 +372,7 @@ function hoverEffect(index) {
   hoverEffects[index].classList.replace("w-0", "w-full");
   hoverEffects[index].classList.replace("h-0", "h-full");
   hoverEffects[index].classList.remove("rounded-bl-full");
-  
+
   clearInterval(autoMoveCarousel)
 }
 // newProduct 마우스 리브 이벤트
@@ -393,7 +382,7 @@ function leaveEffect(index) {
   hoverEffects[index].classList.replace("w-full", "w-0");
 
   autoMoveCarousel = setInterval(function () {
-    carouselIndex ++
+    carouselIndex++
     CarouselEffect();
   }, 3000)
 }
@@ -412,10 +401,10 @@ function moveCarousel() {
 
 function openCountyList() {
   if (countise.classList.contains("max-h-0")) {
-    console.log("open")
+    // console.log("open")
     countise.classList.replace("max-h-0", 'max-h-32')
   } else {
-    console.log("close")
+    // console.log("close")
     countise.classList.replace('max-h-32', "max-h-0")
   }
 }
